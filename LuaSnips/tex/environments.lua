@@ -53,19 +53,40 @@ return {
 
   s({ trig="figure", dscr="insert figure", },
     fmta([[
-      \begin{figure}[<>]
+      \begin{figure}[htbp!]
         \centering
         \includegraphics[<>]{<>}
         \caption{<>}
         \label{fig:<>}
       \end{figure}
     ]], {
-      i(5, "htbp!");
-      i(2, "width = 0.8\\textwidth");
-      i(1, "path of figure");
-      i(3, "Figure Caption");
-      i(4, "label");
-    })
-  ),
+        i(2, "width = 0.8\\textwidth"),
+        i(1, "path of figure"),
+        i(3, "Figure Caption"),
+        i(4, "label"),
+      })),
+  s({ trig="figure2c", dscr="insert two figures into one row" }, fmta([[
+    \begin{figure}[htbp!]
+      \begin{minipage}[t]{0.49\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{<>}
+        \caption{<>}
+        \label{fig:<>}
+      \end{minipage}
+      \begin{minipage}[t]{0.49\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{<>}
+        \caption{<>}
+        \label{fig:<>}
+      \end{minipage}
+    \end{figure}
+  ]], {
+      i(1, "path of figure 1"),
+      i(3, "caption of figure 1"),
+      i(4, "label of figure 1"),
+      i(2, "path of figure 2"),
+      i(5, "caption of figure 2"),
+      i(6, "label of figure 2"),
+    })),
 }
 
