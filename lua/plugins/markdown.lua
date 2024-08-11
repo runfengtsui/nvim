@@ -2,10 +2,11 @@ return {
   {
     "iamcco/markdown-preview.nvim",
     cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
-    build = function()
-      vim.fn["mkdp#util#install"]()
-    end,
     ft = { "markdown" },
+    build = "cd app && npm install",
+    init = function ()
+      vim.g.mkdp_filetypes = { "markdown" }
+    end,
     config = function()
       -- markdown-preview plugin config
       vim.g.mkdp_auto_start = 0
@@ -31,10 +32,5 @@ return {
       vim.g.loaded_table_mode = 1
     end,
   },
-  {
-    "RunfengTsui/wiki.nvim",
-    lazy = true,
-    ft = "markdown",
-  }
 }
 
