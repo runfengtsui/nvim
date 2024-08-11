@@ -21,10 +21,10 @@ map("n", "sc", "<C-w>c", opt)
 map("n", "so", "<C-w>o", opt)
 
 -- Alt + hjkl 窗口之间跳转
-map("n", "<C-h>", "<C-w>h", opt)
-map("n", "<C-j>", "<C-w>j", opt)
-map("n", "<C-k>", "<C-w>k", opt)
-map("n", "<C-l>", "<C-w>l", opt)
+map("n", "<leader>h", "<C-w>h", opt)
+map("n", "<leader>j", "<C-w>j", opt)
+map("n", "<leader>k", "<C-w>k", opt)
+map("n", "<leader>l", "<C-w>l", opt)
 
 -- 左右比例控制
 map("n", "s,", "<cmd>vertical resize -4<CR>", opt)
@@ -48,21 +48,28 @@ map("v", "J", ":move '>+1<CR>gv-gv", opt)
 map("v", "K", ":move '<-2<CR>gv-gv", opt)
 
 -- Terminal
--- Terminal相关
 map("t", "<Esc>", "<C-\\><C-n>", opt)
 -- 为了方便, 将启动终端条件下和分屏一致
-map("t", "<C-l>", "<cmd>wincmd l<CR>", opt)
-map("t", "<C-h>", "<cmd>wincmd h<CR>", opt)
-map("t", "<C-j>", "<cmd>wincmd j<CR>", opt)
-map("t", "<C-k>", "<cmd>wincmd k<CR>", opt)
-map({ "i", "n" }, "<S-R>", "<cmd>ToggleTermSendCurrentLine<CR>", opt)
+map("t", "<leader>h", "<cmd>wincmd h<CR>", opt)
+map("t", "<leader>j", "<cmd>wincmd j<CR>", opt)
+map("t", "<leader>k", "<cmd>wincmd k<CR>", opt)
+map("t", "<leader>l", "<cmd>wincmd l<CR>", opt)
+-- https://github.com/akinsho/toggleterm.nvim?tab=readme-ov-file#sending-lines-to-the-terminal
+-- Set `trim_spaces=false` for sending to REPLs for whitespace-sensitive languages like python.
+local trim_spaces = false
+map({ "i", "n" }, "<S-CR>", function ()
+  require("toggleterm").send_lines_to_terminal("single_line", trim_spaces, { args = vim.v.count })
+end)
+map("v", "<S-CR>", function ()
+  require("toggleterm").send_lines_to_terminal("visual_lines", trim_spaces, { args = vim.v.count })
+end)
 
 -- bufferline
 -- 左右 Tab 切换
-map("n", "<leader><Tab>", ":BufferLineCyclePrev<CR>", opt)
-map("n", "<Tab>", ":BufferLineCycleNext<CR>", opt)
+map("n", "tp", ":BufferLineCyclePrev<CR>", opt)
+map("n", "tn", ":BufferLineCycleNext<CR>", opt)
 -- close buffer, provided by `moll/vim-bbye`
-map("n", "<C-w>", ":Bdelete!<CR>", opt)
+map("n", "<leader>q", ":Bdelete!<CR>", opt)
 map("n", "<leader>bl", ":BufferLineCloseRight<CR>", opt)
 map("n", "<leader>bh", ":BufferLineCloseLeft<CR>", opt)
 map("n", "<leader>bc", ":BufferLinePickClose<CR>", opt)

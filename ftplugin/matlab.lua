@@ -4,7 +4,7 @@ vim.opt_local.tabstop = 4
 vim.opt_local.softtabstop = 4
 
 -- custom baltamatica terminal
-vim.keymap.set("n", "<C-t>", function ()
+vim.keymap.set("n", "<leader>t", function ()
   local Terminal = require('toggleterm.terminal').Terminal
   local baltamterm = Terminal:new({
     cmd = function ()
