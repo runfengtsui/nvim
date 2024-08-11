@@ -13,6 +13,8 @@ return {
     open_mapping = [[<c-\>]],
     start_in_insert = true,
     direction = "horizontal",
+    -- change the default shell to fish
+    shell = "/usr/local/bin/fish"
   },
 }
 
