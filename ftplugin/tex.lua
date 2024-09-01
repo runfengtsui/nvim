@@ -5,3 +5,4 @@ vim.opt_local.softtabstop = 2
 
 -- allow wrap for LaTeX file.
 vim.wo.wrap = true
+
