@@ -24,6 +24,5 @@ require("lazy").setup({
   require("plugins.snippets"),
   require("plugins.autopairs"),
   require("plugins.latex"),
-  require("plugins.autosave")
 })
 
