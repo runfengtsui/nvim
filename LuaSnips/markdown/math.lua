@@ -8,12 +8,13 @@ local fmta = require("luasnip.extras.fmt").fmta
 
 return {
   -- math environment
-  s({ trig = "mk", snippetType = "autosnippet" }, {
-    t"$", i(1), t"$",
+  s({ trig = "mk", dscr = "Insert inline math formula.", snippetType = "autosnippet" }, {
+    t"$", i(1), t"$", i(0)
   }),
   s({ trig = "mb", snippetType = "autosnippet" }, {
     t{"$$", ""}, i(1), t{"", "$$"},
   }),
+
   s({ trig = "cases" }, {
     t{"\\begin{cases}", ""},
     i(1), t{" \\\\", ""},

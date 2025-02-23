@@ -21,5 +21,15 @@ return {
     t({"", "    "}), i(3, "# function body"),
     t({"", "end"})
   }),
+  s({ trig="struct", dscr="Create struct type." }, {
+    t({"struct "}), i(1, "name"),
+    t({"", "    "}), i(2, "# codeblock"),
+    t({"", "end"})
+  }),
+  s({ trig="module", dscr="Create module block." }, {
+    t({"module "}), i(1, "name"),
+    t({"", "    "}), i(2, "# codeblock"),
+    t({"", "end"})
+  }),
 }
 
