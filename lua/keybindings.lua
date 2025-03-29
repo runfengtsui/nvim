@@ -1,5 +1,6 @@
 -- Leader Key
-vim.g.mapleader = " " vim.g.maplocalleader = " "
+vim.g.mapleader = ";"
+vim.g.maplocalleader = ";"
 
 local map = vim.keymap.set
 -- 复用 opt 参数
@@ -7,7 +8,6 @@ local opt = {noremap = true, silent = true }
 
 -- <Esc>
 map("i", "jk", "<Esc>", opt)
-map("n", ";", ":", opt)
 
 -- 取消 s 默认功能(删除一个字符转入插入模式)
 map("n", "s", "", opt)
@@ -46,6 +46,9 @@ map("v", ">", ">gv", opt)
 -- 上下移动选中文本
 map("v", "J", ":move '>+1<CR>gv-gv", opt)
 map("v", "K", ":move '<-2<CR>gv-gv", opt)
+
+-- My Personal Terminal
+map("n", "<leader>t", ":split term://fish<CR>", opt)
 
 -- Terminal
 map("t", "<Esc>", "<C-\\><C-n>", opt)

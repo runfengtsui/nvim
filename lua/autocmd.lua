@@ -22,3 +22,22 @@ vim.api.nvim_create_autocmd({ "InsertLeave", "TextChanged", "TextChangedI" }, {
   end
 })
 
+-- Terminal
+local terminal = vim.api.nvim_create_augroup("TERMINAL", { clear = true })
+vim.api.nvim_create_autocmd({ "TermOpen" }, {
+  pattern = "*",
+  group = terminal,
+  callback = function ()
+    -- 打开终端后自动进入插入模式
+    vim.api.nvim_exec2("startinsert", {})
+  end
+})
+vim.api.nvim_create_autocmd({ "TermClose" }, {
+  pattern = "*",
+  group = terminal,
+  callback = function ()
+    -- 退出终端后自动关闭 buffer
+    vim.api.nvim_exec2("bd!", {})
+  end
+})
+

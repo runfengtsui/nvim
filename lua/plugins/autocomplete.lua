@@ -74,10 +74,6 @@ return {
         -- 补全源
         sources = cmp.config.sources({
           {
-            name = "codeium",
-            group_index = 1,
-          },
-          {
             name = "nvim_lsp",
             group_index = 1,
           },
@@ -87,7 +83,7 @@ return {
           },
           {
             name = "nvim_lsp_signature_help",
-            group_index = 1,
+            group_index = 2,
           },
           {
             name = "buffer",
@@ -177,18 +173,6 @@ return {
         },
       })
     end,
-  },
-  -- Codeium AI
-  {
-    "Exafunction/codeium.nvim",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "hrsh7th/nvim-cmp",
-    },
-    config = function()
-      require("codeium").setup({
-      })
-    end
   },
 }
 
