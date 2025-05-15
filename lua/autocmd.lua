@@ -41,3 +41,27 @@ vim.api.nvim_create_autocmd({ "TermClose" }, {
   end
 })
 
+vim.api.nvim_create_autocmd("BufWritePost", {
+  pattern = "xmake.lua",
+  desc = "Auto generate compile_commands.json when xmake.lua changes",
+  callback = function()
+    -- 获取文件路径并切换到文件所在目录
+    local file_path = vim.fn.expand("%:p")
+    local file_dir = vim.fn.fnamemodify(file_path, ":h")
+    local cwd = vim.fn.getcwd()
+
+    -- 使用 job 异步执行命令避免阻塞
+    vim.fn.chdir(file_dir)
+    vim.fn.jobstart("xmake project -k compile_commands build", {
+      on_exit = function(_, code)
+        vim.fn.chdir(cwd)  -- 恢复原始工作目录
+        if code == 0 then
+          vim.notify("compile_commands.json updated successfully!", vim.log.levels.INFO)
+        else
+          vim.notify("Failed to update compile_commands.json!", vim.log.levels.ERROR)
+        end
+      end
+    })
+  end
+})
+
