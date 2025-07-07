@@ -16,6 +16,9 @@ return {
   s({ trig = "\\lp", snippetType = "autosnippet" }, {
     t("\\left("), i(1), t("\\right)")
   }),
+  s({ trig = "\\l[", snippetType = "autosnippet" }, {
+    t("\\left["), i(1), t("\\right]")
+  }),
   s({ trig = "\\lv", snippetType = "autosnippet" }, {
     t("\\left\\lvert"), i(1), t("\\right\\rvert "),
   }),
@@ -24,6 +27,17 @@ return {
   }),
   s({ trig = "\\lb", snippetType = "autosnippet" }, {
     t("\\left\\lbrace"), i(1), t("\\right\\rbrace"),
+  }),
+
+  -- subscript and supscript
+  s({ trig = "sub" }, {
+    i(1), t("_{"), i(2), t("}"),
+  }),
+  s({ trig = "sup" }, {
+    i(1), t("^{"), i(2), t("}"),
+  }),
+  s({ trig = "sbp" }, {
+    i(1), t("_{"), i(2), t("}^{"), i(3), t("}")
   }),
 
   -- bold symbol
