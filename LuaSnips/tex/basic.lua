@@ -4,26 +4,33 @@ local t = ls.text_node
 local i = ls.insert_node
 
 return {
-  s({ trig="sec" }, {
+  s({ trig="\\section" }, {
     t("\\section{"), i(1), t("}"),
   }),
-  s({ trig="subse" }, {
+  s({ trig="\\subsection" }, {
     t("\\subsection{"), i(1), t("}"),
   }),
-  s({ trig="2subs" }, {
+  s({ trig="\\subsubsection" }, {
     t("\\subsubsection{"), i(1), t("}"),
   }),
-  s({ trig="pac" }, {
+  s({ trig="\\usepackage" }, {
     t("\\usepackage{"), i(1), t("}"),
   }),
-  s({ trig="ref" }, {
+  s({ trig="\\ref" }, {
     t("\\ref{"), i(1), t("}"),
   }),
+  s({ trig="\\cite" }, {
+    t("\\cite{"), i(1), t("}"),
+  }),
+  s({ trig="\\eqref" }, {
+    t("\\eqref{"), i(1), t("}"),
+  }),
+  s({ trig="\\input" }, {
+    t("\\input{"), i(1), t("}"),
+  }),
+
   s({ trig="incode" }, {
     t("\\verb|"), i(1), t("|"),
-  }),
-  s({ trig="eqr" }, {
-    t("\\eqref{"), i(1), t("}"),
   }),
 }
 

@@ -116,17 +116,11 @@ return {
   s({ trig = "\\int", snippetType = "autosnippet" }, {
     c(1, {
       sn(1, fmta([[
-        \int <> \,\mathrm{d}<>
-      ]], { i(1), i(2) })),
+        \int <>
+      ]], { i(1) })),
       sn(2, fmta([[
-        \int_{<>}^{<>} <> \,\mathrm{d}<>
-      ]], { i(1), i(2), i(3), i(4) })),
-      sn(3, fmta([[
-        \displaystyle\int <> \,\mathrm{d}<>
-      ]], { i(1), i(2) })),
-      sn(4, fmta([[
-        \displaystyle\int_{<>}^{<>} <> \,\mathrm{d}<>
-      ]], { i(1), i(2), i(3), i(4) }))
+        \int_{<>}^{<>} <>
+      ]], { i(1), i(2), i(3) }))
     })
   }),
 
