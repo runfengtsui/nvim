@@ -9,7 +9,7 @@ local function baltamcmd()
   if vim.loop.os_uname().sysname == "Windows_NT" then
     baltam = "baltamaticaCLI.exe "
   elseif vim.loop.os_uname().sysname == "Linux" then
-    baltam = "baltamatica.sh -nodesktop"
+    baltam = "baltamatica.sh -nodesktop "
   end
   return baltam
 end
