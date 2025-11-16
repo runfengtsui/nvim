@@ -17,7 +17,7 @@ vim.wo.cursorline = true
 vim.wo.signcolumn = "yes"
 
 -- 右侧代码长度参考线
-vim.wo.colorcolumn = "92"
+vim.wo.colorcolumn = "81"
 
 -- Normal mode >> << 时移动长度
 vim.o.shiftwidth = 4
