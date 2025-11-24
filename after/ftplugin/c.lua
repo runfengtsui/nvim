@@ -10,3 +10,5 @@ vim.api.nvim_create_user_command("XmakeRun", function ()
   vim.api.nvim_exec2("!xmake run", {})
 end, {})
 
+vim.lsp.enable("clangd")
+

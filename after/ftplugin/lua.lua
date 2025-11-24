@@ -9,3 +9,5 @@ vim.keymap.set("n", "<F5>", function ()
   vim.api.nvim_command(command)
 end, { noremap = true, silent = true })
 
+vim.lsp.enable('lua_ls')
+

@@ -13,6 +13,7 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
   require("plugins.colorscheme"),
+  require('plugins.lspconfig'),
   require('plugins.completion'),
   require("plugins.nvim-tree"),
   require("plugins.bufferline"),
@@ -20,7 +21,6 @@ require("lazy").setup({
   require("plugins.markdown"),
   require("plugins.toggleterm"),
   require("plugins.nvim-treesitter"),
-  require("plugins.mason"),
   require("plugins.autopairs"),
   require("plugins.latex"),
 })
