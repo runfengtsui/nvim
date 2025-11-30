@@ -3,14 +3,14 @@ return {
   version = "*",
   dependencies = {
     "nvim-tree/nvim-web-devicons",
-    "moll/vim-bbye",
   },
   config = function()
     vim.opt.termguicolors = true
     require("bufferline").setup({
       options = {
-        -- close command, use `:Bdelete` provided by `moll/vim-bbye`
-        close_command = "Bdelete! %d",
+        close_command = function (bufnr)
+          vim.cmd("bdelete " .. bufnr)
+        end,
 
         -- nvim-tree, show File Explorer
         offsets = {
@@ -22,18 +22,32 @@ return {
 
         -- use nvim lsp
         diagnostics = "nvim_lsp",
-        -- 可选，显示 LSP 报错图标
-        -- @diagnostic disable-next-line: unused-local
-        diagnostics_indicator = function(count, level, diagnostics_dict, context)
-          local s = " "
-          for e, n in pairs(diagnostics_dict) do
-            local sym = e == "error" and " " or (e == "warning" and " " or "")
-            s = s .. n .. sym
+        always_show_bufferline = true,
+
+        -- Show LSP error/warning/hint/info icons
+        diagnostics_indicator = function(_, _, diag)
+          local icons = {
+            Error = " ",
+            Warn = " ",
+            Hint = " ",
+            Info = " ",
+          }
+          local ret = (diag.error and icons.Error .. diag.error .. " " or "")
+            .. (diag.warning and icons.Warn .. diag.warning or "")
+          return vim.trim(ret)
+        end,
+
+        -- Show Filetype icos
+        get_element_icon = function (opts)
+          -- fallback to nvim-web-devicons if available
+          local ok, devicons = pcall(require, "nvim-web-devicons")
+          if ok then
+            local icon, _ = devicons.get_icon_by_filetype(opts.filetype)
+            return icon
           end
-          return s
+          return " "
         end,
       }
     })
   end,
 }
-

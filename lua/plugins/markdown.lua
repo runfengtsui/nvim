@@ -9,7 +9,7 @@ return {
       completions = { lsp = {enabled = true } },
       -- Disable sign column related rendering
       sign = {
-        enable = false,
+        enabled = false,
       },
       code = {
         -- Language icon is rendered to the right
@@ -47,10 +47,10 @@ return {
         },
         -- Gets placed in delimiter row for each column, position is based on alignment.
         alignment_indicator = "─",
-        anti_conceal = {
-          -- Modes to disable anti conceal to show
-          disabled_modes = { 'n' },
-        },
+      },
+      anti_conceal = {
+        -- Modes to disable anti conceal to show
+        disabled_modes = { 'n' },
       },
     }
   }
