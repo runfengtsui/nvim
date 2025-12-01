@@ -1,4 +1,3 @@
-vim.opt_local.expandtab = true
 vim.opt_local.shiftwidth = 4
 vim.opt_local.tabstop = 4
 vim.opt_local.softtabstop = 4
@@ -6,7 +5,7 @@ vim.opt_local.softtabstop = 4
 -- Get Julia command if local environment exists.
 local function get_julia_command()
   local command = 'julia '
-  if vim.fn.filereadable('Project.toml') then
+  if vim.fn.filereadable('Project.toml') == 1 then
     command = command .. '--project=' .. vim.fn.getcwd() .. ' '
   end
   return command

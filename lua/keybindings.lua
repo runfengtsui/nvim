@@ -14,10 +14,10 @@ map("n", "s", "", opt)
 
 -- Window
 -- Move to Window
-map("n", "<C-h>", "<C-W>h", { desc = "Move to left window" })
-map("n", "<C-j>", "<C-W>j", { desc = "Move to below window" })
-map("n", "<C-k>", "<C-W>k", { desc = "Move to above window" })
-map("n", "<C-l>", "<C-W>l", { desc = "Move to right window" })
+map("n", "<leader>h", "<C-W>h", { desc = "Move to left window" })
+map("n", "<leader>j", "<C-W>j", { desc = "Move to below window" })
+map("n", "<leader>k", "<C-W>k", { desc = "Move to above window" })
+map("n", "<leader>l", "<C-W>l", { desc = "Move to right window" })
 -- Split window 
 map("n", "<leader>-", "<C-W>s", { desc = "Split window horizontally", remap = true })
 map("n", "<leader>=", "<C-W>v", { desc = "Split window vertically", remap = true })
