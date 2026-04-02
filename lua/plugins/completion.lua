@@ -1,20 +1,22 @@
-return {
-  {
-    'saghen/blink.cmp',
-    event = { 'BufReadPost', 'BufNewFile' },
-    dependencies = {
-      {
-        'L3MON4D3/LuaSnip',
-        version = 'v2.*',
-        config = function ()
-          require("luasnip.loaders.from_lua").lazy_load({
-            paths = vim.fn.stdpath("config") .. "/LuaSnips",
-          })
-        end
-      },
-    },
-    version = '1.*',
-    opts = {
+vim.pack.add({
+  -- CMP
+  { src = "https://github.com/saghen/blink.cmp" },
+  -- LuaSnip
+  { src = "https://github.com/L3MON4D3/LuaSnip" },
+  -- Autopairs
+  { src = "https://github.com/windwp/nvim-autopairs" },
+})
+
+-- Lazy load
+vim.api.nvim_create_autocmd({ "InsertEnter", "CmdlineEnter" }, {
+  group = vim.api.nvim_create_augroup("SetupCompletion", { clear = true }),
+  once = true,
+  callback = function ()
+    require("nvim-autopairs").setup {
+      disable_filetype = { "tex" },
+    }
+
+    require("blink.cmp").setup({
       keymap = {
         -- Disable built-in keybindings
         preset = 'none',
@@ -30,16 +32,20 @@ return {
       completion = {
         documentation = { auto_show = false }
       },
+      -- Use LuaSnip for snippets
+      snippets = { preset = 'luasnip' },
       -- Default list of enabled providers defined so that you can extend it
       -- elsewhere in your config, without redefining it, due to `opts_extend`
       sources = {
-        default = { 'lsp', 'path', 'snippets', 'buffer' },
+        default = { "lsp", "path", "snippets", "buffer" },
       },
-      -- Use LuaSnip for snippets
-      snippets = { preset = 'luasnip' },
       -- Fuzzy matcher for typo resistance and significantly better performance
       fuzzy = { implementation = "lua" },
-    },
-  },
-}
 
+    })
+
+    require("luasnip.loaders.from_lua").lazy_load({
+      paths = vim.fn.stdpath("config") .. "/LuaSnips",
+    })
+  end
+})

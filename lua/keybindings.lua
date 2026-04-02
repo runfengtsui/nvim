@@ -24,11 +24,6 @@ map("n", "<leader>=", "<C-W>v", { desc = "Split window vertically", remap = true
 -- Delete window
 map("n", "<leader>wd", "<C-W>c", { desc = "Delete Window", remap = true })
 
--- Buffer
-map("n", "<S-h>", "<cmd>BufferLineCyclePrev<cr>", { desc = "Prev Buffer" })
-map("n", "<S-l>", "<cmd>BufferLineCycleNext<cr>", { desc = "Next Buffer" })
-map("n", "<leader>bd", "<cmd>bdelete<cr>", { desc = "Delete Buffer" })
-
 -- 左右比例控制
 map("n", "s,", "<cmd>vertical resize -4<CR>", opt)
 map("n", "s.", "<cmd>vertical resize +4<CR>", opt)

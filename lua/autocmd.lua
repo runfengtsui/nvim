@@ -1,7 +1,6 @@
-local disable_auto_comment = vim.api.nvim_create_augroup("DISABLE_AUTO_COMMENT", { clear = true })
 vim.api.nvim_create_autocmd({ "FileType" }, {
   pattern = "*",
-  group = disable_auto_comment,
+  group = vim.api.nvim_create_augroup("DISABLE_AUTO_COMMENT", { clear = true }),
   callback = function ()
     vim.opt_local.formatoptions = vim.opt_local.formatoptions - {"r", "c", "o"}
   end
@@ -9,10 +8,9 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
 
 -- Autosave
 -- https://github.com/brianhuster/autosave.nvim
-local autosave = vim.api.nvim_create_augroup("AUTOSAVE", { clear = true })
 vim.api.nvim_create_autocmd({ "InsertLeave", "TextChanged", "TextChangedI" }, {
   pattern = "*",
-  group = autosave,
+  group = vim.api.nvim_create_augroup("AUTOSAVE", { clear = true }),
   callback = function ()
     local modified = vim.api.nvim_eval("&modified")
     local modifiable = vim.api.nvim_eval("&modifiable")
@@ -64,4 +62,3 @@ vim.api.nvim_create_autocmd("BufWritePost", {
     })
   end
 })
-
