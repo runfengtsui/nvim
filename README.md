@@ -48,6 +48,14 @@ julia --project=~/.julia/environments/nvim-lspconfig -e 'using Pkg; \
 ```
 更新仍需在这个包环境中使用 `Pkg.update()` 命令.
 
+## Tree-sitter CLI
+
+The plugin `nvim-treesitter` requires `tree-sitter-cli` tool to install and
+update parsers. It is better to install `tree-sitter-cli` using `cargo`:
+```bash
+cargo install tree-sitter-cli --locked
+```
+
 ## 其他补充材料
 Here are some materials to learn how to configure Neovim with lua.
 
@@ -56,4 +64,3 @@ Here are some materials to learn how to configure Neovim with lua.
 ## TODO
 
 * 如何检测当前环境, 设置代码段在特定的环境中触发
-

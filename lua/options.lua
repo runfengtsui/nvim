@@ -2,6 +2,14 @@
 vim.g.encoding = "UTF-8"
 vim.o.fileencoding = 'utf-8'
 
+-- line wrapping with a textwidth of 80
+vim.opt.wrap = true
+vim.opt.textwidth = 80
+-- Break lines at word boundaries
+vim.opt.linebreak = true
+-- Add a visual indicator at 80 characters
+vim.opt.colorcolumn = "80"
+
 -- jkhl 移动时光标周围保留8行
 vim.o.scrolloff = 8
 vim.o.sidescrolloff = 8
@@ -15,9 +23,6 @@ vim.wo.cursorline = true
 
 -- 显示左侧图标指示列
 vim.wo.signcolumn = "yes"
-
--- 右侧代码长度参考线
-vim.wo.colorcolumn = "81"
 
 -- Normal mode >> << 时移动长度
 vim.o.shiftwidth = 4
@@ -46,9 +51,6 @@ vim.o.cmdheight = 1
 -- 当文件被外部程序修改时, 自动加载
 vim.o.autoread = true
 vim.bo.autoread = true
-
--- 禁止折行
-vim.wo.wrap = false
 
 -- 光标在行首尾时 <Left><Right> 可以跳到下一行
 vim.o.whichwrap = '<,>,[,]'
