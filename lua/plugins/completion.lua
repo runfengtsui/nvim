@@ -1,5 +1,6 @@
 vim.pack.add({
   -- CMP
+  { src = "https://github.com/saghen/blink.lib" },
   { src = "https://github.com/saghen/blink.cmp" },
   -- LuaSnip
   { src = "https://github.com/L3MON4D3/LuaSnip" },
@@ -16,7 +17,9 @@ vim.api.nvim_create_autocmd({ "InsertEnter", "CmdlineEnter" }, {
       disable_filetype = { "tex" },
     }
 
-    require("blink.cmp").setup({
+    local cmp = require("blink.cmp")
+    cmp.build():wait(6000)
+    cmp.setup({
       keymap = {
         -- Disable built-in keybindings
         preset = 'none',
