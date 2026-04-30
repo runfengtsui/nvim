@@ -1,11 +1,9 @@
 vim.pack.add({
   -- CMP
-  { src = "https://github.com/saghen/blink.lib" },
-  { src = "https://github.com/saghen/blink.cmp" },
+  'https://github.com/saghen/blink.lib',
+  'https://github.com/saghen/blink.cmp',
   -- LuaSnip
-  { src = "https://github.com/L3MON4D3/LuaSnip" },
-  -- Autopairs
-  { src = "https://github.com/windwp/nvim-autopairs" },
+  'https://github.com/L3MON4D3/LuaSnip',
 })
 
 -- Lazy load
@@ -13,20 +11,14 @@ vim.api.nvim_create_autocmd({ "InsertEnter", "CmdlineEnter" }, {
   group = vim.api.nvim_create_augroup("SetupCompletion", { clear = true }),
   once = true,
   callback = function ()
-    require("nvim-autopairs").setup {
-      disable_filetype = { "tex" },
-    }
-
-    local cmp = require("blink.cmp")
-    cmp.build():wait(6000)
-    cmp.setup({
+    require('blink.cmp').setup({
       keymap = {
         -- Disable built-in keybindings
         preset = 'none',
         -- Custtom keybindings
         ['<cr>'] = { 'select_and_accept', 'fallback' },
-        ['<tab>'] = { 'select_next', 'snippet_forward', 'fallback' },
-        ['<s-tab>'] = { 'select_prev', 'snippet_backward', 'fallback' },
+        ['<C-j>'] = { 'select_next', 'snippet_forward', 'fallback' },
+        ['<C-k>'] = { 'select_prev', 'snippet_backward', 'fallback' },
         -- Default scroll documentation keybinding
         ['<C-b>'] = { 'scroll_documentation_up', 'fallback' },
         ['<C-f>'] = { 'scroll_documentation_down', 'fallback' },
@@ -43,8 +35,7 @@ vim.api.nvim_create_autocmd({ "InsertEnter", "CmdlineEnter" }, {
         default = { "lsp", "path", "snippets", "buffer" },
       },
       -- Fuzzy matcher for typo resistance and significantly better performance
-      fuzzy = { implementation = "lua" },
-
+      fuzzy = { implementation = "rust" },
     })
 
     require("luasnip.loaders.from_lua").lazy_load({
@@ -52,3 +43,11 @@ vim.api.nvim_create_autocmd({ "InsertEnter", "CmdlineEnter" }, {
     })
   end
 })
+
+-- LuaSnip: Change the active choice
+local ls = require("luasnip")
+vim.keymap.set({"i", "s"}, "<C-P>", function()
+  if ls.choice_active() then
+    ls.change_choice(1)
+  end
+end, {silent = true})

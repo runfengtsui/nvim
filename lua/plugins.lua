@@ -3,6 +3,8 @@
 vim.pack.add({
   -- Markdown
   { src = "https://github.com/MeanderingProgrammer/render-markdown.nvim" },
+  -- Autopairs
+  'https://github.com/windwp/nvim-autopairs',
 })
 
 require("plugins.completion")
