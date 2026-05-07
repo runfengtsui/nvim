@@ -1,13 +1,16 @@
+if vim.g.vscode then return end
+
 vim.pack.add({
   { src = "https://github.com/lervag/vimtex" },
 })
 
 -- Viewer Settings
-if vim.loop.os_uname().sysname == "Windows_NT" then
+local platform = require("platforms")
+if platform.is_windows then
   vim.g.vimtex_view_general_viewer = 'SumatraPDF'
   vim.g.vimtex_view_general_options
     = '-reuse-instance -forward-search @tex @line @pdf'
-elseif vim.loop.os_uname().sysname == "Linux" then
+elseif platform.is_windows then
   vim.g.vimtex_view_method = 'zathura'
 end
 
