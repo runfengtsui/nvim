@@ -2,6 +2,20 @@
 vim.g.encoding = "UTF-8"
 vim.o.fileencoding = 'utf-8'
 
+-- Shell
+local platform = require("platforms")
+if platform.is_windows then
+    -- PowerShell
+    vim.o.shell = "powershell.exe"
+    vim.o.shellcmdflag = "-NoProfile -Command"
+    vim.o.shellquote = ""
+    vim.o.shellxescape = ""
+elseif platform.is_linux then
+    vim.o.shell = vim.fn.executable("fish") == 1 and "fish" or "bash"
+elseif platform.is_mac then
+    vim.o.shell = vim.fn.executable("fish") == 1 and "fish" or "bash"
+end
+
 -- line wrapping with a textwidth of 80
 vim.opt.wrap = true
 vim.opt.textwidth = 80

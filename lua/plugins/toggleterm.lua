@@ -2,14 +2,6 @@ vim.pack.add({
   { src = "https://github.com/akinsho/toggleterm.nvim" },
 })
 
-local myshell = function ()
-  if vim.loop.os_uname().sysname == "Windows_NT" then
-    return vim.o.shell
-  elseif vim.loop.os_uname().sysname == "Linux" then
-    return "fish"
-  end
-end
-
 require("toggleterm").setup({
   size = function(term)
     if term.direction == "horizontal" then
@@ -21,5 +13,5 @@ require("toggleterm").setup({
   open_mapping = [[<c-\>]],
   start_in_insert = true,
   direction = "horizontal",
-  shell = myshell,
+  shell = vim.o.shell,
 })
