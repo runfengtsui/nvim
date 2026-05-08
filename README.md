@@ -1,6 +1,6 @@
 # Neovim 配置
 
-当前配置适用 Neovim 版本为 v0.12.0.
+当前 Neovim 版本为 v0.12.2.
 
 ## LSP 配置
 
@@ -55,6 +55,13 @@ update parsers. It is better to install `tree-sitter-cli` using `cargo`:
 ```bash
 cargo install tree-sitter-cli --locked
 ```
+
+## Plugins
+### Telescope.nvim
+
+The function `live_grep` provided by `Telescope.nvim` plugin can search for a
+string in your current working directory and get results live as you type. It
+requires `ripgrep` and you can install it under the guidance of [Github](https://github.com/BurntSushi/ripgrep.git).
 
 ## 其他补充材料
 Here are some materials to learn how to configure Neovim with lua.
