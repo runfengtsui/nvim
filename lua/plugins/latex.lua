@@ -2,10 +2,11 @@ if vim.g.vscode then
   local code = require("vscode")
   vim.keymap.set("n", "<leader>ll", function ()
     code.action("latex-workshop.build")
-  end, { noremap = true, silent = true, desc = "Build the project" })
-  vim.keymap.set("n", "<leader>lv", function ()
     code.action("latex-workshop.view")
-  end, { noremap = true, silent = true, desc = "View the PDF file" })
+  end, { noremap = true, silent = true, desc = "Build and view the project" })
+  vim.keymap.set("n", "<leader>lv", function ()
+    code.action("latex-workshop.synctex")
+  end, { noremap = true, silent = true, desc = "SyncTeX from cursor" })
   return
 end
 
