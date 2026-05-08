@@ -5,8 +5,6 @@ vim.pack.add({
   { src = "https://github.com/MeanderingProgrammer/render-markdown.nvim" },
   -- Autopairs
   'https://github.com/windwp/nvim-autopairs',
-  -- LaTeX
-  { src = "https://github.com/lervag/vimtex" },
 })
 
 require("plugins.completion")
