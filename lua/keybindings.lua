@@ -3,15 +3,21 @@ vim.g.mapleader = ";"
 vim.g.maplocalleader = ";"
 
 if vim.g.vscode then
-  local code = require('vscode')
+  local code = require("vscode")
+  vim.keymap.set('n', "<leader>p", function ()
+    code.action("workbench.action.showCommands")
+  end, { noremap = true, silent = true, desc = "Show commands"})
+  -- Sidebar
+  vim.keymap.set('n', "<leader>e", function ()
+    code.action("workbench.view.explorer")
+  end, { noremap = true, silent = true, desc = "Open the explorer"})
+  vim.keymap.set('n', "<leader>x", function ()
+    code.action("workbench.view.extensions")
+  end, { noremap = true, silent = true, desc = "Show the extensions"})
   -- Terminal
   vim.keymap.set('n', "<leader>t", function ()
     code.action("workbench.action.terminal.toggleTerminal")
   end, { noremap = true, silent = true, desc = "Toggle terminal" })
-  -- Explorer
-  vim.keymap.set('n', '<leader>e', function ()
-    code.action("workbench.view.explorer")
-  end, { noremap = true, silent = true, desc = "Open the explorer"})
   -- Move to Window
   vim.keymap.set('n', "<leader>h", function ()
     code.action("workbench.action.focusLeftGroup")
