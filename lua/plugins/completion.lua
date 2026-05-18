@@ -1,8 +1,26 @@
 if vim.g.vscode then return end
 
 vim.pack.add({
+  "https://github.com/saghen/blink.lib"
+})
+
+vim.api.nvim_create_autocmd("PackChanged", {
+  callback = function (ev)
+    local name, kind = ev.data.spec.name, ev.data.kind
+    if name == "LuaSnip" and (kind == "install" or kind == "update") then
+      vim.system({ "make", "install_jsregexp" }, { cwd = ev.data.path })
+    end
+    if name == "blink.cmp" and (kind == "install" or kind == "update") then
+      if not ev.data.activate then
+        vim.cmd.packadd("blink.cmp")
+      end
+      require("blink.cmp").build():wait(60000)
+    end
+  end
+})
+
+vim.pack.add({
   -- CMP
-  'https://github.com/saghen/blink.lib',
   'https://github.com/saghen/blink.cmp',
   -- LuaSnip
   'https://github.com/L3MON4D3/LuaSnip',
