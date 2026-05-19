@@ -23,7 +23,7 @@ vim.pack.add({
   -- CMP
   'https://github.com/saghen/blink.cmp',
   -- LuaSnip
-  'https://github.com/L3MON4D3/LuaSnip',
+  'https://github.com/L3MON4D3/LuaSnip'
 })
 
 -- Lazy load
@@ -41,7 +41,7 @@ vim.api.nvim_create_autocmd({ "InsertEnter", "CmdlineEnter" }, {
         ['<C-k>'] = { 'select_prev', 'snippet_backward', 'fallback' },
         -- Default scroll documentation keybinding
         ['<C-b>'] = { 'scroll_documentation_up', 'fallback' },
-        ['<C-f>'] = { 'scroll_documentation_down', 'fallback' },
+        ['<C-f>'] = { 'scroll_documentation_down', 'fallback' }
       },
       -- (Default) Only show the documentation popup when manually triggered
       completion = {
@@ -55,11 +55,11 @@ vim.api.nvim_create_autocmd({ "InsertEnter", "CmdlineEnter" }, {
         default = { "lsp", "path", "snippets", "buffer" },
       },
       -- Fuzzy matcher for typo resistance and significantly better performance
-      fuzzy = { implementation = "rust" },
+      fuzzy = { implementation = "prefer_rust" }
     })
 
     require("luasnip.loaders.from_lua").lazy_load({
-      paths = vim.fn.stdpath("config") .. "/LuaSnips",
+      paths = vim.fn.stdpath("config") .. "/LuaSnips"
     })
   end
 })
