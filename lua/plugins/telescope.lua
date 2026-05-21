@@ -37,6 +37,9 @@ require("telescope").setup{
         -- previous selection
         ["<C-k>"] = actions.move_selection_previous,
         ["<S-Tab>"] = false,
+        -- Go to a file in a new tab
+        ["<CR>"] = actions.select_tab,
+        ["<C-t>"] = false
       },
     },
   }

@@ -1,4 +1,3 @@
--- require("plugins.nvim-tree"),
 -- require("plugins.lualine"),
 vim.pack.add({
   -- Markdown
